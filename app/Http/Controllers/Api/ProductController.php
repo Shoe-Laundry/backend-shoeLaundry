@@ -31,7 +31,8 @@ class ProductController extends Controller
             'price' => 'required|integer',
             'stock' => 'required|integer',
             'category' => 'required|in:washingservice,careandmaintenance,additionalservices,serviceplans',
-            'image' => 'required|image|mimes:png,jpg,jpeg'
+            'image' => 'required|image|mimes:png,jpg,jpeg',
+            'description' => 'required|string'
         ]);
 
         $filename = time() . '.' . $request->image->extension();
@@ -42,7 +43,8 @@ class ProductController extends Controller
             'stock' => (int) $request->stock,
             'category' => $request->category,
             'image' => $filename,
-            'is_favorite' => $request->is_favorite
+            'is_favorite' => $request->is_favorite,
+            'description' => $request->description
         ]);
 
         if ($product) {
